@@ -1,7 +1,7 @@
 {
     "name": "@youmayknow/cli",
     "version": "1.0.0",
-    "description": "",
+    "description": "pnpm-cli demo",
     "main": "lib/index.js",
     "bin": {
         "pnpm-cli": "bin/cli.js"
