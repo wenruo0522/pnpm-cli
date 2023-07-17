@@ -6,14 +6,27 @@ class Command {
 
         this.program = instance
 
+        const cmd = this.program.command(this.command)
+        cmd.description(this.description)
+        cmd.hook('preAction', () => {
+            this.preAction()
+        })
 
-        this.program
-            .command(this.command)
-            .description(this.description)
-            .option('-f, --force', '是否强制更新', false)
-            .action((name, opts) => {
-                console.log('init...', name, opts)
+        cmd.hook('postAction', () => {
+            this.postAction()
+        })
+
+        cmd.option('-f, --force', '是否强制更新', false)
+
+        if (this.options?.length > 0) {
+            this.options.forEach(option => {
+                cmd.option(...option)
             })
+        }
+
+        cmd.action((...params) => {
+            this.action(params)
+        })
 
     }
 
@@ -24,6 +37,18 @@ class Command {
     get description() {
         throw new Error(`description must be implements`)
     }
+
+    get options() {
+        return []
+    }
+
+    get action() {
+        throw new Error(`action must be implements`)
+    }
+
+    preAction() {}
+
+    postAction() {}
 
 
 }
