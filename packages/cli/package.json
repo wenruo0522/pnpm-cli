@@ -19,5 +19,8 @@
     "license": "ISC",
     "dependencies": {
         "import-local": "^3.1.0"
+    },
+    "devDependencies": {
+        "commander": "^11.0.0"
     }
 }
