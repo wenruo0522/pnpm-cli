@@ -1,6 +1,6 @@
 
 import { program } from 'commander'
-
+import { Init } from '@youmayknow/init'
 import pkg from '../package.json' assert { type: 'json' }
 
 
@@ -12,13 +12,7 @@ const entry = (args) => {
         .version(pkg.version)
         .option('-d --debug', '是否开启调试模式', false)
 
-    program
-        .command('init [name]')
-        .description('init project')
-        .option('-f, --force', '是否强制更新', false)
-        .action((name, opts) => {
-            console.log('init...', name, opts)
-        })
+    Init(program)
 
     program.parse(process.argv)
 }

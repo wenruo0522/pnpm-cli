@@ -18,6 +18,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@youmayknow/init": "workspace:^",
         "import-local": "^3.1.0"
     },
     "devDependencies": {

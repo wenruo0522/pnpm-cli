@@ -14,6 +14,9 @@ importers:
 
   packages/cli:
     dependencies:
+      '@youmayknow/init':
+        specifier: workspace:^
+        version: link:../init
       import-local:
         specifier: ^3.1.0
         version: 3.1.0
@@ -21,6 +24,14 @@ importers:
       commander:
         specifier: ^11.0.0
         version: 11.0.0
+
+  packages/command: {}
+
+  packages/init:
+    dependencies:
+      '@youmayknow/command':
+        specifier: workspace:^
+        version: link:../command
 
 packages:
 
