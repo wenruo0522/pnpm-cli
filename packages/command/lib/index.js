@@ -6,13 +6,18 @@ class Command {
 
         this.program = instance
 
-
         this.program
             .command(this.command)
             .description(this.description)
             .option('-f, --force', '是否强制更新', false)
-            .action((name, opts) => {
-                console.log('init...', name, opts)
+            .hook('preAction', () => {
+                this.preAction()
+            })
+            .hook('postAction', () => {
+                this.postAction()
+            })
+            .action((...params) => {
+                this.action(params)
             })
 
     }
@@ -25,9 +30,19 @@ class Command {
         throw new Error(`description must be implements`)
     }
 
+    get options() {
+        return []
+    }
+
+    get action() {
+        throw new Error(`action must be implements`)
+    }
+
+    preAction() {}
+
+    postAction() {}
 
 }
-
 
 export {
     Command
