@@ -21,6 +21,9 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0
     devDependencies:
+      '@youmayknow/utils':
+        specifier: workspace:^
+        version: link:../utils
       commander:
         specifier: ^11.0.0
         version: 11.0.0
@@ -32,6 +35,12 @@ importers:
       '@youmayknow/command':
         specifier: workspace:^
         version: link:../command
+    devDependencies:
+      '@youmayknow/utils':
+        specifier: workspace:^
+        version: link:../utils
+
+  packages/utils: {}
 
 packages:
 

@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 import importLocal from 'import-local'
-import log from 'npmlog'
+import { log } from '@youmayknow/utils'
 import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
