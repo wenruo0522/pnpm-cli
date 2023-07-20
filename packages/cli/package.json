@@ -19,7 +19,8 @@
     "license": "ISC",
     "dependencies": {
         "@youmayknow/init": "workspace:^",
-        "import-local": "^3.1.0"
+        "import-local": "^3.1.0",
+        "semver": "^7.5.4"
     },
     "devDependencies": {
         "@youmayknow/utils": "workspace:^",

@@ -1,9 +1,31 @@
 
 import { program } from 'commander'
+import semver from 'semver'
 import { Init as createInitCommand } from '@youmayknow/init'
-import { log } from '@youmayknow/utils'
+import { log, isDebug } from '@youmayknow/utils'
 import pkg from '../package.json' assert { type: 'json' }
 
+
+const LOWES_NODE_VERSION = '19.0.0'
+function checkNodeVersion() {
+    log.verbose('node version', process.version)
+    if (!semver.gte(process.version, LOWES_NODE_VERSION)) {
+        throw new Error(`pnpm-cli 需要安装${LOWES_NODE_VERSION}以上版本的 Node.js`)
+    }
+}
+
+function preAction() {
+    checkNodeVersion()
+}
+
+process.on('uncaughtException', (e) => {
+    if (isDebug()) {
+        console.log(e)
+    } else {
+        console.log(e.message)
+    }
+
+})
 
 const entry = (args) => {
 
@@ -14,6 +36,7 @@ const entry = (args) => {
         .usage('<command> [options]')
         .version(pkg.version)
         .option('-d, --debug', '是否开启调试模式', false)
+        .hook('preAction', preAction)
 
     createInitCommand(program)
 
