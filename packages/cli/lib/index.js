@@ -1,16 +1,17 @@
 
 import { program } from 'commander'
 import semver from 'semver'
+import chalk from "chalk"
 import { Init as createInitCommand } from '@youmayknow/init'
 import { log, isDebug } from '@youmayknow/utils'
 import pkg from '../package.json' assert { type: 'json' }
 
 
-const LOWES_NODE_VERSION = '19.0.0'
+const LOWES_NODE_VERSION = '14.0.0'
 function checkNodeVersion() {
     log.verbose('node version', process.version)
     if (!semver.gte(process.version, LOWES_NODE_VERSION)) {
-        throw new Error(`pnpm-cli 需要安装${LOWES_NODE_VERSION}以上版本的 Node.js`)
+        throw new Error(chalk.red(`pnpm-cli 需要安装${LOWES_NODE_VERSION}以上版本的 Node.js`))
     }
 }
 
