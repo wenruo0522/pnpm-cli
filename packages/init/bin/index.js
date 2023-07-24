@@ -1,5 +1,6 @@
 
 import { Command } from '@youmayknow/command'
+import { log } from '@youmayknow/utils'
 
 class InitCommand extends Command {
     get command() {
@@ -11,13 +12,11 @@ class InitCommand extends Command {
     }
 
     get options() {
-        return [
-            ['-f, --force', '是否强制更新', false]
-        ]
+        return ['-f, --force', '是否强制更新', false]
     }
 
     action([name, opts]) {
-        console.log('init', name, opts)
+        log.verbose('init', name, opts)
     }
 }
 

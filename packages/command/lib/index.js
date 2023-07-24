@@ -6,27 +6,19 @@ class Command {
 
         this.program = instance
 
-        const cmd = this.program.command(this.command)
-        cmd.description(this.description)
-        cmd.hook('preAction', () => {
-            this.preAction()
-        })
-
-        cmd.hook('postAction', () => {
-            this.postAction()
-        })
-
-        cmd.option('-f, --force', '是否强制更新', false)
-
-        if (this.options?.length > 0) {
-            this.options.forEach(option => {
-                cmd.option(...option)
+        this.program
+            .command(this.command)
+            .description(this.description)
+            .option('-f, --force', '是否强制更新', false)
+            .hook('preAction', () => {
+                this.preAction()
             })
-        }
-
-        cmd.action((...params) => {
-            this.action(params)
-        })
+            .hook('postAction', () => {
+                this.postAction()
+            })
+            .action((...params) => {
+                this.action(params)
+            })
 
     }
 
@@ -50,9 +42,7 @@ class Command {
 
     postAction() {}
 
-
 }
-
 
 export {
     Command

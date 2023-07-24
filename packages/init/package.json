@@ -12,5 +12,8 @@
     "license": "ISC",
     "dependencies": {
         "@youmayknow/command": "workspace:^"
+    },
+    "devDependencies": {
+        "@youmayknow/utils": "workspace:^"
     }
 }

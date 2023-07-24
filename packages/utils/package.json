@@ -1,0 +1,13 @@
+{
+  "name": "@youmayknow/utils",
+  "version": "1.0.0",
+  "description": "pnpm-cli utils",
+  "main": "bin/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
